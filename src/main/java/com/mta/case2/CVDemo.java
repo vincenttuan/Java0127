@@ -38,6 +38,6 @@ public class CVDemo {
         // 平均體重
         double weightAvg = getAvg(weight);
         
-        System.out.printf("平均身高: .1f cm  平均體重: .1f kg\n", heightAvg, weightAvg);
+        System.out.printf("平均身高: %.1f cm  平均體重: %.1f kg\n", heightAvg, weightAvg);
     }
 }
