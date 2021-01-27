@@ -70,6 +70,7 @@ public class CVDemo {
         
         System.out.printf("平均身高: %.1f cm  平均體重: %.1f kg\n", heightAvg, weightAvg);
         System.out.printf("標準差身高: %.1f cm  標準差體重: %.1f kg\n", heightSD, weightSD);
-        System.out.printf("變異係數身高: %.1f cm  變異係數體重: %.1f kg\n", heightCV, weightCV);
+        System.out.printf("變異係數身高: %.3f  變異係數體重: %.3f\n", heightCV, weightCV);
+        System.out.printf("變異係數身高: %.1f%%  變異係數體重: %.1f%%\n", heightCV*100, weightCV*100);
     }
 }
