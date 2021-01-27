@@ -31,7 +31,7 @@ public class CVDemo {
         return avg;
     }
     
-    // 標準差
+    // 標準差 SD
     public static double getSD(double [] data) {
         double sd = 0.0;
         double avg = getAvg(data);
@@ -44,6 +44,15 @@ public class CVDemo {
         return sd;
     }
     
+    // 變異係數 C.V 公式：標準差(sd) / 平均(avg)
+    public static double getCV(double [] data) {
+        double cv = 0.0;
+        double sd = getSD(data);
+        double avg = getAvg(data);
+        cv = sd / avg;
+        return cv;
+    }
+    
     // 主程式
     public static void main(String[] args) {
         // 平均身高
@@ -54,8 +63,13 @@ public class CVDemo {
         double heightSD = getSD(height);
         // 標準差體重
         double weightSD = getSD(weight);
+        // 變異係數身高
+        double heightCV = getCV(height);
+        // 變異係數體重
+        double weightCV = getCV(weight);
         
         System.out.printf("平均身高: %.1f cm  平均體重: %.1f kg\n", heightAvg, weightAvg);
         System.out.printf("標準差身高: %.1f cm  標準差體重: %.1f kg\n", heightSD, weightSD);
+        System.out.printf("變異係數身高: %.1f cm  變異係數體重: %.1f kg\n", heightCV, weightCV);
     }
 }
