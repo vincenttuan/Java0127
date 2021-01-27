@@ -1,4 +1,4 @@
-package com.mta.case2;
+package com.mta.case3;
 /*
 某公司有18位員工
 其中10位在去年投資股票，一年的獲利率如下(單位：%)：
