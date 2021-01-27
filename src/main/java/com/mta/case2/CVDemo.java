@@ -31,13 +31,31 @@ public class CVDemo {
         return avg;
     }
     
+    // 標準差
+    public static double getSD(double [] data) {
+        double sd = 0.0;
+        double avg = getAvg(data);
+        // 平方差的和
+        double diff = 0.0;
+        for(double d : data) {
+            diff += Math.pow(d - avg, 2); // Math.pow 次方
+        }
+        sd = Math.sqrt(diff / data.length); // Math.sqrt 開根號
+        return sd;
+    }
+    
     // 主程式
     public static void main(String[] args) {
         // 平均身高
         double heightAvg = getAvg(height);
         // 平均體重
         double weightAvg = getAvg(weight);
+        // 標準差身高
+        double heightSD = getSD(height);
+        // 標準差體重
+        double weightSD = getSD(weight);
         
         System.out.printf("平均身高: %.1f cm  平均體重: %.1f kg\n", heightAvg, weightAvg);
+        System.out.printf("標準差身高: %.1f cm  標準差體重: %.1f kg\n", heightSD, weightSD);
     }
 }
