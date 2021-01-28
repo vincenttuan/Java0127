@@ -1,11 +1,9 @@
 package com.mta.case5;
 
-import java.io.PrintStream;
 import java.util.Arrays;
 
 public class MultiArrayDemo5 {
-    public static void main(String[] args) throws Exception {
-        System.setOut(new PrintStream(System.out, true, "UTF8"));
+    public static void main(String[] args) {
         double[][] values = {
             {160.5, 170, 180.5}, // 身高
             {56, 60, 72}, // 體重
