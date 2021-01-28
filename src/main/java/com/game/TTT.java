@@ -1,6 +1,7 @@
 package com.game;
 
 import static com.game.Util.print;
+import static com.game.Util.gameOver;
 import java.util.Random;
 import java.util.Scanner;
 public class TTT {
@@ -16,14 +17,22 @@ public class TTT {
             int p = sc.nextInt();
             p -= 1;
             ttt[p/3][p%3] = 'O'; // 將 O 填入
+            // 判斷遊戲是否結束 ?
+            if(gameOver(ttt)) {
+                break;
+            }
             // PC 遊戲進行
             do {                
                 p = r.nextInt(9); // 0~8
                 // 判斷 ttt[p/3][p%3] 是否是 '\u0000'
             } while (ttt[p/3][p%3] != '\u0000');
             ttt[p/3][p%3] = 'X'; // 將 X 填入
-            
+            // 判斷遊戲是否結束 ?
+            if(gameOver(ttt)) {
+                break;
+            }
         } while (true);
         
+        System.out.println("Game Over !");
     }
 }
