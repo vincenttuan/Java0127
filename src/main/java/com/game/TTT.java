@@ -19,6 +19,7 @@ public class TTT {
             ttt[p/3][p%3] = 'O'; // 將 O 填入
             // 判斷遊戲是否結束 ?
             if(gameOver(ttt)) {
+                print(ttt);
                 break;
             }
             // PC 遊戲進行
@@ -29,6 +30,7 @@ public class TTT {
             ttt[p/3][p%3] = 'X'; // 將 X 填入
             // 判斷遊戲是否結束 ?
             if(gameOver(ttt)) {
+                print(ttt);
                 break;
             }
         } while (true);
