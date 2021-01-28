@@ -25,7 +25,7 @@ public class Util {
             checks[7] = ttt[0][2] == mark && ttt[1][1] == mark && ttt[2][0] == mark;
             for (boolean check : checks) {
                 if (check) {
-                    System.out.printf("%c Win !\n", mark);
+                    System.out.printf("%s Win !\n", mark=='O'?"User":"PC");
                     return true; // 遊戲結束
                 }
             }
