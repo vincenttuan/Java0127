@@ -16,10 +16,17 @@ public class ArrayListDemo {
         // 動態陣列
         ArrayList list = new ArrayList();
         list.add(100);
-        list.add(90);
+        list.add("OKOK");
         list.add(80);
         System.out.println(list);
         System.out.println(list.get(0)); // 取出陣列元素的第一筆
         System.out.println(list.size()); // 取出陣列長度
+        // 動態陣列(泛型指定)
+        ArrayList<Integer> list2 = new ArrayList<>();
+        list2.add(100);
+        list2.add(90);
+        list2.add(80);
+        System.out.println(list2);
+        
     }
 }
