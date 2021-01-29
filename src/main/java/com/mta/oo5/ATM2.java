@@ -8,6 +8,10 @@ public class ATM2 {
     public static void main(String[] args) {
         while (play) {            
             menu();
+            if(play) {
+                System.out.println("按下 enter 鍵後繼續...");
+                new Scanner(System.in).nextLine();
+            }
         }
     }
     
