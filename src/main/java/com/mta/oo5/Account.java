@@ -17,12 +17,29 @@ public class Account {
         this.no = no;
     }
 
-    public int getMoney() {
+    public int getMoney() { // 查款
         return money;
     }
+    
+    // 一般方法
+    public boolean withdrawMoney(int money) { // 提款
+        if(money > 0 && this.money >= money) {
+            this.money -= money;
+            System.out.printf("%s 提款 $%d 成功\n", no, money);
+            return true;
+        }
+        System.out.printf("%s 提款 $%d 失敗\n", no, money);
+        return false;
+    }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public boolean depositMoney(int money) { // 存款
+        if(money > 0) {
+            this.money += money;
+            System.out.printf("%s 存款 $%d 成功\n", no, money);
+            return true;
+        }
+        System.out.printf("%s 存款 $%d 失敗\n", no, money);
+        return false;
     }
 
     @Override
