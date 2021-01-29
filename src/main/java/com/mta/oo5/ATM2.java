@@ -37,8 +37,20 @@ public class ATM2 {
                 Util.addAccount(newNo, newMoney);
                 break;
             case 2: // 存款
+                System.out.print("請輸入存款帳號: ");
+                String depositNo = sc.next();
+                System.out.print("請輸入存款金額: ");
+                int depositMoney = sc.nextInt();
+                // 調用存款方法
+                Util.deposit(depositNo, depositMoney);
                 break;
             case 3: // 提款
+                System.out.print("請輸入提款帳號: ");
+                String withdrawNo = sc.next();
+                System.out.print("請輸入提款金額: ");
+                int withdrawMoney = sc.nextInt();
+                // 調用提款方法
+                Util.withdraw(withdrawNo, withdrawMoney);
                 break;
             case 4: // 轉帳
                 break;
