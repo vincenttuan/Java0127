@@ -28,8 +28,8 @@ public class Main2 {
         for(int i=0;i<(int)(percentAdult*10);i++) chartAdult += "*";
         for(int i=0;i<(int)(percentChild*10);i++) chartChild += "*";
         
-        System.out.printf("已成年: %3d (%.2f) %-10s\n", amountAdult, percentAdult, chartAdult);
-        System.out.printf("未成年: %3d (%.2f) %-10s\n", amountChild, percentChild, chartChild);
+        System.out.printf("%3s: %3d (%.2f) %-10s\n", "已成年", amountAdult, percentAdult, chartAdult);
+        System.out.printf("%3s: %3d (%.2f) %-10s\n", "未成年", amountChild, percentChild, chartChild);
         
     }
 }
