@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Main2 {
     public static void main(String[] args) {
-        int n = 30;
+        int n = 300;
         ArrayList<Student> students = getStudents(n);
         // System.out.println(students);
         // 1.要印出未成年
@@ -28,8 +28,8 @@ public class Main2 {
         for(int i=0;i<(int)(percentAdult*10);i++) chartAdult += "*";
         for(int i=0;i<(int)(percentChild*10);i++) chartChild += "*";
         
-        System.out.printf("已成年: %2d (%.2f) %-10s\n", amountAdult, percentAdult, chartAdult);
-        System.out.printf("未成年: %2d (%.2f) %-10s\n", amountChild, percentChild, chartChild);
+        System.out.printf("已成年: %3d (%.2f) %-10s\n", amountAdult, percentAdult, chartAdult);
+        System.out.printf("未成年: %3d (%.2f) %-10s\n", amountChild, percentChild, chartChild);
         
     }
 }
