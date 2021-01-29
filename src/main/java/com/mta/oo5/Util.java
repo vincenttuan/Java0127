@@ -1,6 +1,8 @@
 package com.mta.oo5;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 // ATM 的工具類別
 public class Util {
@@ -71,7 +73,11 @@ public class Util {
         return accounts;
     }
     
-    public static void print(ArrayList<Account> accounts) {
+    public static void print(Account act) {
+        print(Arrays.asList(act));
+    }
+    
+    public static void print(List<Account> accounts) {
         System.out.println("+----+-------+");
         System.out.println("| no | money |");
         System.out.println("+----+-------+");

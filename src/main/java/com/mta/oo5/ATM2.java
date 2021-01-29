@@ -73,7 +73,7 @@ public class ATM2 {
                 if(readNo.equals("all")) {
                     Util.print(Util.readAll());
                 } else {
-                    System.out.println(Util.read(readNo));
+                    Util.print(Util.read(readNo));
                 }
                 break;
             case 0: // 離開
