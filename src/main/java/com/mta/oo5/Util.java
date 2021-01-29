@@ -15,17 +15,37 @@ public class Util {
     
     // 提款
     public void withdraw(String no, int money) {
-        
+        Account act = read(no);
+        if(act == null) {
+            System.out.printf("%s 帳號不存在\n", no);
+            return;
+        } 
+        act.withdrawMoney(money);
     }
     
     // 存款
     public void deposit(String no, int money) {
-        
+        Account act = read(no);
+        if(act == null) {
+            System.out.printf("%s 帳號不存在\n", no);
+            return;
+        } 
+        act.depositMoney(money);
     }
     
     // 轉帳
     public void deposit(String fromNo, String toNo, int money) {
-        
+        Account fromAct = read(fromNo);
+        Account toAct = read(toNo);
+        if(fromAct == null) {
+            System.out.printf("%s 帳號不存在\n", fromNo);
+            return;
+        }
+        if(toAct == null) {
+            System.out.printf("%s 帳號不存在\n", toNo);
+            return;
+        }
+        fromAct.transferMoney(money, toAct);
     }
     
     // 查詢帳戶
