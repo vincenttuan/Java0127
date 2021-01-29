@@ -71,7 +71,7 @@ public class ATM2 {
                 String readNo = sc.next();
                 // 調用查詢方法
                 if(readNo.equals("all")) {
-                    System.out.println(Util.readAll());
+                    Util.print(Util.readAll());
                 } else {
                     System.out.println(Util.read(readNo));
                 }
