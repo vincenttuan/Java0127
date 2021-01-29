@@ -41,6 +41,14 @@ public class Account {
         System.out.printf("%s 存款 $%d 失敗\n", no, money);
         return false;
     }
+    
+    public void transferMoney(int money, Account act) {
+        System.out.println("轉帳開始");
+        if(withdrawMoney(money)) { // 自己把錢提出來 !
+            act.depositMoney(money); // 把錢存進去給 act 物件
+        }
+        System.out.println("轉帳結束");
+    }
 
     @Override
     public String toString() {
