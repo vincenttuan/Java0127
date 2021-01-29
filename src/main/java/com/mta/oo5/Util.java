@@ -2,7 +2,7 @@ package com.mta.oo5;
 
 import java.util.ArrayList;
 
-// 工具類別
+// ATM 的工具類別
 public class Util {
     
     // 所有帳戶的集合資料
@@ -14,16 +14,6 @@ public class Util {
         accounts.add(account);
     }
     
-    // 提款
-    public static void withdraw(String no, int money) {
-        Account act = read(no);
-        if(act == null) {
-            System.out.printf("%s 帳號不存在\n", no);
-            return;
-        } 
-        act.withdrawMoney(money);
-    }
-    
     // 存款
     public static void deposit(String no, int money) {
         Account act = read(no);
@@ -32,6 +22,16 @@ public class Util {
             return;
         } 
         act.depositMoney(money);
+    }
+    
+    // 提款
+    public static void withdraw(String no, int money) {
+        Account act = read(no);
+        if(act == null) {
+            System.out.printf("%s 帳號不存在\n", no);
+            return;
+        } 
+        act.withdrawMoney(money);
     }
     
     // 轉帳

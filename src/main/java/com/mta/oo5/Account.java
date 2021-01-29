@@ -1,8 +1,8 @@
 package com.mta.oo5;
 
 public class Account {
-    private String no;
-    private int money;
+    private String no; // 帳號
+    private int money; // 餘額
 
     public Account(String no, int money) {
         this.no = no;
@@ -42,6 +42,7 @@ public class Account {
         return false;
     }
     
+    // 轉帳
     public void transferMoney(int money, Account act) {
         System.out.println("轉帳開始");
         if(withdrawMoney(money)) { // 自己把錢提出來 !
