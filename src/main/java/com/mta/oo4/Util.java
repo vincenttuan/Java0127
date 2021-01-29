@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Util {
-    public static ArrayList<Student> getStudents() {
+    public static ArrayList<Student> getStudents(int n) {
         ArrayList<Student> list = new ArrayList<>();
         Faker faker = new Faker();
         Random r = new Random();
-        for(int i=0;i<30;i++) {
+        for(int i=0;i<n;i++) {
             Student student = new Student();
             String name = faker.name().lastName();
             int age = r.nextInt(50);
