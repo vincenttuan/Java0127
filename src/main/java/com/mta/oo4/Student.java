@@ -10,8 +10,8 @@ public class Student {
     }
 
     public Student(String name, int age) {
-        this.name = name;
-        this.age = age;
+        setName(name);
+        setAge(age);
     }
     
     // 封裝方法 (getter/setter)
@@ -28,7 +28,9 @@ public class Student {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        if(age >= 0) {
+            this.age = age;
+        }
     }
     
     // 一般(加值)方法
