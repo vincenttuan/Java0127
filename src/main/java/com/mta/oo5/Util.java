@@ -8,6 +8,13 @@ public class Util {
     // 所有帳戶的集合資料
     private static ArrayList<Account> accounts = new ArrayList<>();
     
+    // 加入預設帳戶資料
+    static {
+        accounts.add(new Account("a01", 1000));
+        accounts.add(new Account("b02", 1000));
+        accounts.add(new Account("c03", 1000));
+    }
+    
     // 開戶
     public static void addAccount(String no, int money) {
         Account account = new Account(no, money);

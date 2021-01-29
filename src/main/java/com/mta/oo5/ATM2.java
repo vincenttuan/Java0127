@@ -57,6 +57,14 @@ public class ATM2 {
                 Util.withdraw(withdrawNo, withdrawMoney);
                 break;
             case 4: // 轉帳
+                System.out.print("請輸入帳號(from): ");
+                String fromNo = sc.next();
+                System.out.print("請輸入轉帳帳號(to): ");
+                String toNo = sc.next();
+                System.out.print("請輸入轉帳金額: ");
+                int transferMoney = sc.nextInt();
+                // 調用轉帳方法
+                Util.transfer(fromNo, toNo, transferMoney);
                 break;
             case 5: // 查詢
                 System.out.print("請輸入查詢帳號或輸入[all]看全部: ");
