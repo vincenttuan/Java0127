@@ -55,6 +55,14 @@ public class ATM2 {
             case 4: // 轉帳
                 break;
             case 5: // 查詢
+                System.out.print("請輸入查詢帳號或輸入[all]看全部: ");
+                String readNo = sc.next();
+                // 調用查詢方法
+                if(readNo.equals("all")) {
+                    System.out.println(Util.readAll());
+                } else {
+                    System.out.println(Util.read(readNo));
+                }
                 break;
             case 0: // 離開
                 play = false;
