@@ -9,5 +9,7 @@ public class Main {
         System.out.println(s2.getAge());
         System.out.println(s1);
         System.out.println(s2);
+        System.out.printf("%s 是否成年: %b\n", s1.getName(), s1.isAdult());
+        System.out.printf("%s 是否成年: %b\n", s2.getName(), s2.isAdult());
     }
 }
