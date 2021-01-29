@@ -4,17 +4,18 @@ import java.util.ArrayList;
 
 // 工具類別
 public class Util {
+    
     // 所有帳戶的集合資料
     private static ArrayList<Account> accounts = new ArrayList<>();
     
     // 開戶
-    public void addAccount(String no, int money) {
+    public static void addAccount(String no, int money) {
         Account account = new Account(no, money);
         accounts.add(account);
     }
     
     // 提款
-    public void withdraw(String no, int money) {
+    public static void withdraw(String no, int money) {
         Account act = read(no);
         if(act == null) {
             System.out.printf("%s 帳號不存在\n", no);
@@ -24,7 +25,7 @@ public class Util {
     }
     
     // 存款
-    public void deposit(String no, int money) {
+    public static void deposit(String no, int money) {
         Account act = read(no);
         if(act == null) {
             System.out.printf("%s 帳號不存在\n", no);
@@ -34,7 +35,7 @@ public class Util {
     }
     
     // 轉帳
-    public void deposit(String fromNo, String toNo, int money) {
+    public static void deposit(String fromNo, String toNo, int money) {
         Account fromAct = read(fromNo);
         Account toAct = read(toNo);
         if(fromAct == null) {
@@ -49,7 +50,7 @@ public class Util {
     }
     
     // 查詢帳戶
-    public Account read(String no) {
+    public static Account read(String no) {
         for(Account act : accounts) {
             if(act.getNo().equals(no)) {
                 return act;
@@ -59,7 +60,7 @@ public class Util {
     }
     
     // 查詢全部帳戶
-    public ArrayList<Account> readAll() {
+    public static ArrayList<Account> readAll() {
         return accounts;
     }
     
