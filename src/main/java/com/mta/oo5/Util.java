@@ -35,7 +35,7 @@ public class Util {
     }
     
     // 轉帳
-    public static void deposit(String fromNo, String toNo, int money) {
+    public static void transfer(String fromNo, String toNo, int money) {
         Account fromAct = read(fromNo);
         Account toAct = read(toNo);
         if(fromAct == null) {
