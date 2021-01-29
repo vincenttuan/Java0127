@@ -71,4 +71,15 @@ public class Util {
         return accounts;
     }
     
+    public static void print(ArrayList<Account> accounts) {
+        System.out.println("+----+-------+");
+        System.out.println("| no | money |");
+        System.out.println("+----+-------+");
+        for(Account act : accounts) {
+            System.out.printf("|%4s|%7d|\n", act.getNo(), act.getMoney());
+            System.out.println("+----+-------+");
+        }
+        System.out.println("\n");
+    }
+    
 }
