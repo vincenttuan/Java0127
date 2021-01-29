@@ -30,6 +30,11 @@ public class Util {
     
     // 查詢帳戶
     public Account read(String no) {
+        for(Account act : accounts) {
+            if(act.getNo().equals(no)) {
+                return act;
+            }
+        }
         return null;
     }
     
