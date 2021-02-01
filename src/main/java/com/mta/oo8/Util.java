@@ -2,9 +2,12 @@ package com.mta.oo8;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -36,5 +39,28 @@ public class Util {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = stock.getQuote().getLastTradeTime().getTime();
         timeLabel.setText(sdf.format(date));
+    }
+    
+    public static void exchangeList(JTable exchangeTable) {
+        DefaultTableModel model = (DefaultTableModel)exchangeTable.getModel();
+        // 清空資料
+        model.setRowCount(-1);
+        
+        try {
+            String[] symbols = new String[] {"USDTWD=x", "JPYTWD=x", "CNYTWD=x", "EURTWD=x"};
+            Map<String, Stock> stocks = YahooFinance.get(symbols);
+            for(String symbol : symbols) {
+                Stock stock = stocks.get(symbol);
+                Object[] data = {
+                    stock.getName(), 
+                    stock.getQuote().getPrice(), 
+                    stock.getQuote().getChange(),
+                    stock.getQuote().getChangeInPercent()
+                };
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

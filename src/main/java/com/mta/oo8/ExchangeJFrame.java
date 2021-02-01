@@ -18,6 +18,7 @@ public class ExchangeJFrame extends javax.swing.JFrame {
      */
     public ExchangeJFrame() {
         initComponents();
+        Util.exchangeList(exchangeTable);
     }
 
     /**
