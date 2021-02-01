@@ -18,7 +18,19 @@ public class ExchangeJFrame extends javax.swing.JFrame {
      */
     public ExchangeJFrame() {
         initComponents();
-        Util.exchangeList(exchangeTable);
+        Thread t = new Thread() {
+            public void run() {
+                while(true) {
+                    try {
+                        Util.exchangeList(exchangeTable);
+                        Thread.sleep(3000);
+                    } catch(Exception e) {
+                    }
+                }
+            }
+        };
+        t.start();
+        
     }
 
     /**
