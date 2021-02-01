@@ -57,6 +57,8 @@ public class Util {
                     stock.getName(),
                     stock.getQuote().getPreviousClose(),
                     stock.getQuote().getPrice(), 
+                    stock.getQuote().getBid(),
+                    stock.getQuote().getAsk(),
                     stock.getQuote().getChange(),
                     stock.getQuote().getChangeInPercent(),
                     sdf.format(stock.getQuote().getLastTradeTime().getTime())
