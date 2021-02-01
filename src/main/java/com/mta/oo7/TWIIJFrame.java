@@ -8,10 +8,24 @@ public class TWIIJFrame extends javax.swing.JFrame {
 
     public TWIIJFrame() {
         initComponents();
-        start();
+        
+        Thread t = new Thread() {
+            public void run() {
+                while (true) {                    
+                    try {
+                        play();
+                        Thread.sleep(3000);
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        };
+        t.start();
+        
+        
     }
     
-    private void start() {
+    private void play() {
         String symbol = "^TWII";
         try {
             Stock stock = YahooFinance.get(symbol);
