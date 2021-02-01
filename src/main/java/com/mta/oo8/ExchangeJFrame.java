@@ -87,11 +87,11 @@ public class ExchangeJFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "幣別", "匯率", "漲跌", "漲跌幅"
+                "幣別", "匯率", "漲跌", "漲跌幅", "時間"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

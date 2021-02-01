@@ -46,6 +46,7 @@ public class Util {
         DefaultTableModel model = (DefaultTableModel)exchangeTable.getModel();
         // 清空資料
         model.setRowCount(0);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         try {
             // 欲查詢的匯率商品
             String[] symbols = new String[] {"USDTWD=x", "JPYTWD=x", "CNYTWD=x", "EURTWD=x"};
@@ -56,7 +57,8 @@ public class Util {
                     stock.getName(), 
                     stock.getQuote().getPrice(), 
                     stock.getQuote().getChange(),
-                    stock.getQuote().getChangeInPercent()
+                    stock.getQuote().getChangeInPercent(),
+                    sdf.format(stock.getQuote().getLastTradeTime().getTime())
                 };
                 // 將 data (Object[] 陣列) 加入到 model 中
                 model.addRow(data);
