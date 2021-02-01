@@ -5,6 +5,8 @@
  */
 package com.mta.oo8;
 
+import yahoofinance.Stock;
+
 /**
  *
  * @author MB-teacher
@@ -56,6 +58,11 @@ public class ExchangeJFrame extends javax.swing.JFrame {
 
         exchangeButton.setFont(new java.awt.Font("微軟正黑體", 0, 18)); // NOI18N
         exchangeButton.setText("兌換");
+        exchangeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exchangeButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("微軟正黑體", 0, 14)); // NOI18N
         jLabel1.setText("交易時間 : ");
@@ -138,6 +145,15 @@ public class ExchangeJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exchangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exchangeButtonActionPerformed
+        String cur1 = curCombo1.getItemAt(curCombo1.getSelectedIndex());
+        String cur2 = curCombo2.getItemAt(curCombo2.getSelectedIndex());
+        Stock stock = Util.getExchange(cur1, cur2);
+        double money = Double.parseDouble(moneyField1.getText());
+        double result = money * stock.getQuote().getPrice().doubleValue();
+        moneyField2.setText(String.format("%.1f", result));
+    }//GEN-LAST:event_exchangeButtonActionPerformed
 
     /**
      * @param args the command line arguments
