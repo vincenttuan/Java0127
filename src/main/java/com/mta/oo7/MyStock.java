@@ -1,20 +1,23 @@
 package com.mta.oo7;
 
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
+
 public class MyStock {
     private static String name = "小明的投資";
     private String stockName; // 股票名稱
     private String symbol;    // 股票代號
     private double cost;      // 買進價格(成本)
     private int amount;       // 買進數量
-
+    private double price;     // 目前價格(透過 financequotes-api.com 取得)
     public MyStock() {
     }
 
     public MyStock(String stockName, String symbol, double cost, int amount) {
-        this.stockName = stockName;
-        this.symbol = symbol;
-        this.cost = cost;
-        this.amount = amount;
+        setStockName(stockName);
+        setSymbol(symbol);
+        setCost(cost);
+        setAmount(amount);
     }
 
     public static String getName() {
@@ -38,6 +41,12 @@ public class MyStock {
     }
 
     public void setSymbol(String symbol) {
+        // 取得 price
+        try {
+            Stock stock = YahooFinance.get(symbol);
+            price = stock.getQuote().getPrice().doubleValue();
+        } catch (Exception e) {
+        }
         this.symbol = symbol;
     }
 
@@ -59,7 +68,8 @@ public class MyStock {
 
     @Override
     public String toString() {
-        return "MyStock{" + "stockName=" + stockName + ", symbol=" + symbol + ", cost=" + cost + ", amount=" + amount + '}';
+        return "MyStock{" + "stockName=" + stockName + ", symbol=" + symbol + ", cost=" + cost + ", amount=" + amount + ", price=" + price + '}';
     }
+
     
 }
