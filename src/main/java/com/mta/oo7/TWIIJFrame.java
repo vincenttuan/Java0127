@@ -47,10 +47,15 @@ public class TWIIJFrame extends javax.swing.JFrame {
             // 改變顏色
             if(change == 0) {
                 changeLabel.setForeground(Color.black);
+                changeInPercentLabel.setForeground(Color.black);
             } else if(change > 0) {
                 changeLabel.setForeground(Color.red);
+                changeInPercentLabel.setForeground(Color.red);
+                changeLabel.setText("^" + changeLabel.getText());
             } else {
-                changeLabel.setForeground(new Color(0, 51, 0)); // R, G, B
+                changeLabel.setForeground(new Color(0, 100, 0)); // R, G, B
+                changeInPercentLabel.setForeground(new Color(0, 100, 0)); // R, G, B
+                changeLabel.setText("v" + changeLabel.getText());
             }
             
         } catch (Exception e) {
