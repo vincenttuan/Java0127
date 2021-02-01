@@ -42,21 +42,24 @@ public class Util {
     }
     
     public static void exchangeList(JTable exchangeTable) {
+        // 取得 JTable 的 model 物件
         DefaultTableModel model = (DefaultTableModel)exchangeTable.getModel();
         // 清空資料
-        model.setRowCount(-1);
-        
+        model.setRowCount(0);
         try {
+            // 欲查詢的匯率商品
             String[] symbols = new String[] {"USDTWD=x", "JPYTWD=x", "CNYTWD=x", "EURTWD=x"};
-            Map<String, Stock> stocks = YahooFinance.get(symbols);
             for(String symbol : symbols) {
-                Stock stock = stocks.get(symbol);
+                Stock stock = YahooFinance.get(symbol);
+                // 將所的到的資料放入 Object[] 陣列
                 Object[] data = {
                     stock.getName(), 
                     stock.getQuote().getPrice(), 
                     stock.getQuote().getChange(),
                     stock.getQuote().getChangeInPercent()
                 };
+                // 將 data (Object[] 陣列) 加入到 model 中
+                model.addRow(data);
             }
             
         } catch (Exception e) {
