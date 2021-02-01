@@ -66,6 +66,14 @@ public class MyStock {
         this.amount = amount;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
     @Override
     public String toString() {
         return "MyStock{" + "stockName=" + stockName + ", symbol=" + symbol + ", cost=" + cost + ", amount=" + amount + ", price=" + price + '}';

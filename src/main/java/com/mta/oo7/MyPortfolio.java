@@ -7,5 +7,7 @@ public class MyPortfolio {
         MyStock s2 = new MyStock("鴻海", "2317.TW", 120, 2000);
         System.out.println(s1);
         System.out.println(s2);
+        MyStock[] myStocks = {s1, s2};
+        Util.print(myStocks);
     }
 }
