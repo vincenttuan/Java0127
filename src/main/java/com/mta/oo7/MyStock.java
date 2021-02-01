@@ -5,10 +5,10 @@ import yahoofinance.YahooFinance;
 
 public class MyStock {
     private static String name = "小明的投資";
-    private String stockName; // 股票名稱
-    private String symbol;    // 股票代號
-    private double cost;      // 買進價格(成本)
-    private int amount;       // 買進數量
+    private String stockName; // 股票名稱(自行輸入)
+    private String symbol;    // 股票代號(自行輸入)
+    private double cost;      // 買進價格(成本)(自行輸入)
+    private int amount;       // 買進數量(自行輸入)
     private double price;     // 目前價格(透過 financequotes-api.com 取得)
     public MyStock() {
     }
