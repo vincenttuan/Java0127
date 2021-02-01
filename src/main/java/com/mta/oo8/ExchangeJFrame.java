@@ -147,12 +147,7 @@ public class ExchangeJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exchangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exchangeButtonActionPerformed
-        String cur1 = curCombo1.getItemAt(curCombo1.getSelectedIndex());
-        String cur2 = curCombo2.getItemAt(curCombo2.getSelectedIndex());
-        Stock stock = Util.getExchange(cur1, cur2);
-        double money = Double.parseDouble(moneyField1.getText());
-        double result = money * stock.getQuote().getPrice().doubleValue();
-        moneyField2.setText(String.format("%.1f", result));
+        Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2);
     }//GEN-LAST:event_exchangeButtonActionPerformed
 
     /**
