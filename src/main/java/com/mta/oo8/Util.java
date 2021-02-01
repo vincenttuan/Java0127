@@ -54,7 +54,8 @@ public class Util {
                 Stock stock = YahooFinance.get(symbol);
                 // 將所的到的資料放入 Object[] 陣列
                 Object[] data = {
-                    stock.getName(), 
+                    stock.getName(),
+                    stock.getQuote().getPreviousClose(),
                     stock.getQuote().getPrice(), 
                     stock.getQuote().getChange(),
                     stock.getQuote().getChangeInPercent(),
