@@ -43,6 +43,11 @@ public class ExchangeJFrame extends javax.swing.JFrame {
 
         curCombo1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         curCombo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TWD", "USD", "JPY", "CNY", "EUR" }));
+        curCombo1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                curCombo1ItemStateChanged(evt);
+            }
+        });
 
         moneyField1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         moneyField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -50,6 +55,11 @@ public class ExchangeJFrame extends javax.swing.JFrame {
 
         curCombo2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         curCombo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USD", "JPY", "CNY", "EUR", "TWD" }));
+        curCombo2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                curCombo2ItemStateChanged(evt);
+            }
+        });
 
         moneyField2.setEditable(false);
         moneyField2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
@@ -149,6 +159,14 @@ public class ExchangeJFrame extends javax.swing.JFrame {
     private void exchangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exchangeButtonActionPerformed
         Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2);
     }//GEN-LAST:event_exchangeButtonActionPerformed
+
+    private void curCombo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_curCombo1ItemStateChanged
+        Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2);
+    }//GEN-LAST:event_curCombo1ItemStateChanged
+
+    private void curCombo2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_curCombo2ItemStateChanged
+        Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2);
+    }//GEN-LAST:event_curCombo2ItemStateChanged
 
     /**
      * @param args the command line arguments
