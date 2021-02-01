@@ -157,15 +157,15 @@ public class ExchangeJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exchangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exchangeButtonActionPerformed
-        Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2);
+        Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2, timeLabel);
     }//GEN-LAST:event_exchangeButtonActionPerformed
 
     private void curCombo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_curCombo1ItemStateChanged
-        Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2);
+        Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2, timeLabel);
     }//GEN-LAST:event_curCombo1ItemStateChanged
 
     private void curCombo2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_curCombo2ItemStateChanged
-        Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2);
+        Util.exchange(curCombo1, curCombo2, moneyField1, moneyField2, timeLabel);
     }//GEN-LAST:event_curCombo2ItemStateChanged
 
     /**
