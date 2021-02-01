@@ -1,5 +1,6 @@
 package com.mta.oo7;
 
+import java.awt.Color;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.Interval;
@@ -42,6 +43,15 @@ public class TWIIJFrame extends javax.swing.JFrame {
             volLabel.setText(String.format("%d", vol));
             changeLabel.setText(String.format("%.2f", change));
             changeInPercentLabel.setText(String.format("%.2f", changeInPercent));
+            
+            // 改變顏色
+            if(change == 0) {
+                changeLabel.setForeground(Color.black);
+            } else if(change > 0) {
+                changeLabel.setForeground(Color.red);
+            } else {
+                changeLabel.setForeground(new Color(0, 51, 0)); // R, G, B
+            }
             
         } catch (Exception e) {
             e.printStackTrace();
