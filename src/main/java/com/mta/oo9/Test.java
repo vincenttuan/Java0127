@@ -14,6 +14,5 @@ public class Test {
         // 印出 Student 相關資料
         System.out.printf("%s 年齡 %d\n", student.getName(), student.getAge());
         student.study("Java");
-        
     }
 }
