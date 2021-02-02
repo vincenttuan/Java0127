@@ -41,7 +41,18 @@ public class Test {
         System.out.printf("StockOptions: $%,d\n", sum3);
         // 取得所有 salary, budget 與 stockOptions 的總和 ?
         int sum4 = 0;
-        
+        for(Employee emp : employees) {
+            // 加總 salary
+            sum4 += emp.salary;
+            // 加總 budget
+            if(emp instanceof Manager) {
+                sum4 += ((Manager)emp).budget;
+            }
+            // 加總 stockOptions
+            if(emp instanceof Director) {
+                sum4 += ((Director)emp).stockOptions;
+            }
+        }
         System.out.printf("Total: $%,d\n", sum4);
     }
 }
