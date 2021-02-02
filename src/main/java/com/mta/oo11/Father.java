@@ -1,9 +1,10 @@
 package com.mta.oo11;
 
 public class Father {
-
-    public Father() {
-        System.out.println("Father 建構子");
+    int money;
+    public Father(int money) {
+        this.money = money;
+        System.out.println("Father 建構子1");
     }
     
 }
