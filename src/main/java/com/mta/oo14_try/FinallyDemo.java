@@ -10,6 +10,7 @@ public class FinallyDemo {
         } catch (Exception e) {
             System.out.println(e);
             return;
+            // System.exit(0); // 強迫關閉程式
         } finally { // 不論 try 區塊內是否有錯誤發生, 皆會執行此方法
             openFile = "關閉檔案";
             System.out.printf("程式結束: %s\n", openFile);
