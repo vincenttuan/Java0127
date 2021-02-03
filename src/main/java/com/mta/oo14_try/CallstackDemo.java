@@ -3,11 +3,15 @@ package com.mta.oo14_try;
 public class CallstackDemo {
     public static void main(String[] args) {
         System.out.println("執行 main()");
-        a(10);
+        a(0);
     }
     public static void a(int n) {
         System.out.println("執行 a()");
-        b(n);
+        try {
+            b(n);
+        } catch (Exception e) {
+            System.out.println("a() 處理錯誤了");
+        }
     }
     public static void b(int n) {
         System.out.println("執行 b()");
