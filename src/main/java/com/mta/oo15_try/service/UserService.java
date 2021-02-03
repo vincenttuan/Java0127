@@ -8,14 +8,17 @@ import java.util.List;
 public class UserService {
     private UserLogin userLogin = new UserLogin();
     
+    // 取得 UserLogin 物件
     public UserLogin getUserLogin() {
         return userLogin;
     }
     
+    // 查詢所有 User
     public List<User> queryUsers() {
         return UserUtil.queryUsers();
     }
     
+    // 查詢單筆 User, 根據 username
     public User getUser(String username) throws UserNotFoundException {
         return UserUtil.getUserByName(username);
     }
