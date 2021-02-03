@@ -14,6 +14,7 @@ public class Test {
     public void t1() {
         System.out.println("測試所有 User 資料:");
         System.out.println(us.queryUsers());
+        us.print();
     }
     
     // 測試登入

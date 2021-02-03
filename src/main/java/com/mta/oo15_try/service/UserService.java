@@ -42,16 +42,16 @@ public class UserService {
     
     public void print() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println("+----------+----------+----------+----------+");
-        System.out.printf("+%-10s+%-10s+%-20s+%-20s+\n", "username", "password", "email", "tdate");
-        System.out.println("+----------+----------+----------+----------+");
+        System.out.println("+----------+----------+--------------------+--------------------+");
+        System.out.printf("|%-10s+%-10s+%-20s+%-20s|\n", "username", "password", "email", "tdate");
+        System.out.println("+----------+----------+--------------------+--------------------+");
         for(User u : queryUsers()) {
-            System.out.printf("+%-10s+%-10s+%-20s+%-20s+\n", 
+            System.out.printf("|%-10s+%-10s+%-20s+%-20s|\n", 
                             u.getUsername(),
                             u.getPassword(),
                             u.getEmail(),
                             sdf.format(u.getTdate()));
-            System.out.println("+----------+----------+----------+----------+");
+            System.out.println("+----------+----------+--------------------+--------------------+");
         }
     }
 }
