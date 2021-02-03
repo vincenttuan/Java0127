@@ -3,6 +3,7 @@ package com.mta.oo15_try.service;
 import com.mta.oo15_try.entity.User;
 import com.mta.oo15_try.exception.UserNotFoundException;
 import com.mta.oo15_try.util.UserUtil;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class UserService {
@@ -37,5 +38,20 @@ public class UserService {
         // 修改 user's email
         user.setEmail(newEmail);
         System.out.println("User password 修改完畢");
+    }
+    
+    public void print() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println("+----------+----------+----------+----------+");
+        System.out.printf("+%-10s+%-10s+%-20s+%-20s+\n", "username", "password", "email", "tdate");
+        System.out.println("+----------+----------+----------+----------+");
+        for(User u : queryUsers()) {
+            System.out.printf("+%-10s+%-10s+%-20s+%-20s+\n", 
+                            u.getUsername(),
+                            u.getPassword(),
+                            u.getEmail(),
+                            sdf.format(u.getTdate()));
+            System.out.println("+----------+----------+----------+----------+");
+        }
     }
 }
