@@ -5,7 +5,7 @@ import com.mta.oo15_try.exception.UserFailLoginException;
 import com.mta.oo15_try.exception.UserNotFoundException;
 import com.mta.oo15_try.util.UserUtil;
 
-public class UserLogin {
+class UserLogin {
     public boolean check(String username, String password) throws UserFailLoginException {
         try {
             // 1. 是否有此人 ?

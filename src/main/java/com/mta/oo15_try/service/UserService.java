@@ -1,14 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mta.oo15_try.service;
 
-/**
- *
- * @author MB-teacher
- */
 public class UserService {
+    private UserLogin userLogin;
     
+    public UserLogin getUserLogin() {
+        return userLogin;
+    }
+    
+    public void updatePassword(String username, String newPassword) {
+        
+    }
+    
+    public void updateEmail(String username, String newEmail) {
+        
+    }
 }
