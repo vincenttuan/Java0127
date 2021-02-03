@@ -45,4 +45,18 @@ public class Test {
         }
         t1(); // 查詢所有 User 資料
     }
+    
+    // 測試修改 Email
+    @org.junit.Test
+    public void t4() {
+        String username = "john";
+        String newEmail = "john@yahoo.com";
+        System.out.printf("將 %s 的 Email改為 %s\n", username, newEmail);
+        try {
+            us.updateEmail(username, newEmail);
+        } catch (UserNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+        t1(); // 查詢所有 User 資料
+    }
 }
