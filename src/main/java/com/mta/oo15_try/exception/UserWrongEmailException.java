@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mta.oo15_try.exception;
 
-/**
- *
- * @author MB-teacher
- */
-public class UserWrongEmailException {
+public class UserWrongEmailException extends UserException {
+    
+    public UserWrongEmailException(String string) {
+        super(string);
+    }
     
 }
