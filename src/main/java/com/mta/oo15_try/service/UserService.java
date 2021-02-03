@@ -1,7 +1,7 @@
 package com.mta.oo15_try.service;
 
 public class UserService {
-    private UserLogin userLogin;
+    private UserLogin userLogin = new UserLogin();
     
     public UserLogin getUserLogin() {
         return userLogin;
