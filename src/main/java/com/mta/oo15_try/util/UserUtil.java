@@ -1,6 +1,7 @@
 package com.mta.oo15_try.util;
 
 import com.mta.oo15_try.entity.User;
+import com.mta.oo15_try.exception.UserNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +18,13 @@ public class UserUtil {
         return users;
     }
     
-    public static User getUserByName(String username) {
-        User user = null;
+    public static User getUserByName(String username) throws UserNotFoundException {
         for(User u : queryUsers()) {
             if(u.getUsername().equals(username)) {
-                user = u;
-                break;
+                return u;
             }
         }
-        return user;
+        UserNotFoundException e = new UserNotFoundException("查無此人");
+        throw e;
     }
 }
