@@ -3,12 +3,21 @@ package com.mta.oo15_try.service;
 import com.mta.oo15_try.entity.User;
 import com.mta.oo15_try.exception.UserNotFoundException;
 import com.mta.oo15_try.util.UserUtil;
+import java.util.List;
 
 public class UserService {
     private UserLogin userLogin = new UserLogin();
     
     public UserLogin getUserLogin() {
         return userLogin;
+    }
+    
+    public List<User> queryUsers() {
+        return UserUtil.queryUsers();
+    }
+    
+    public User getUser(String username) throws UserNotFoundException {
+        return UserUtil.getUserByName(username);
     }
     
     public void updatePassword(String username, String newPassword) throws UserNotFoundException {
