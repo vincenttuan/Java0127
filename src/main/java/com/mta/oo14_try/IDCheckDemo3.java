@@ -2,13 +2,16 @@ package com.mta.oo14_try;
 
 public class IDCheckDemo3 {
     public static void main(String[] args) {
-        String id = "A123456789";
+        String id = "A1234567890";
         try {
             checkId(id);
         } catch (IDException ex) {
             System.err.println(ex);
             System.err.println(ex.getMessage());
+            //ex.怎麼辦();
+            ex.程式強迫停止();
         }
+        System.out.println("程式結束");
     }
     
     public static void checkId(String id) throws IDException {

@@ -11,4 +11,9 @@ public class IDException extends Exception {
         System.out.println("請重新輸入~");
     }
     
+    public void 程式強迫停止() {
+        System.out.println("程式強迫停止");
+        System.exit(0);
+    }
+    
 }
