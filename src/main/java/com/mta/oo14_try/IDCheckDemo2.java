@@ -2,7 +2,7 @@ package com.mta.oo14_try;
 
 public class IDCheckDemo2 {
     public static void main(String[] args) throws Exception {
-        String id = "A123456789";
+        String id = "A1234567890";
         checkId(id);
     }
     
