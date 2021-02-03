@@ -9,6 +9,7 @@ public class InputNumberDemo2 {
         int days = 365;
         Scanner sc = new Scanner(System.in);
         System.out.printf("分子是 %d 請輸入分母: ", days);
+        // --------------------------------------------------------
         try {
            int x = sc.nextInt();
            int result = days/x;
@@ -23,7 +24,7 @@ public class InputNumberDemo2 {
             System.out.println("分母不可 = 0");
             sc = new Scanner(System.in); // 重新取得 Scanner 物件
         }
-        
+        // --------------------------------------------------------
         System.out.print("是否要繼續(Y/N)? ");
         String goon = sc.next();
         if(goon.equalsIgnoreCase("y")) {
