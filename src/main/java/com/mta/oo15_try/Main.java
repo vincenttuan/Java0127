@@ -61,13 +61,13 @@ public class Main {
     
     public static void menu() {
         do {            
-            System.out.println("------------------");
+            System.out.println("------------------------");
             System.out.println("1.Print all users");
-            System.out.println("2.Print user");
+            System.out.println("2.Print user by username");
             System.out.println("3.Update password");
             System.out.println("4.Update email");
             System.out.println("0.Exit");
-            System.out.println("------------------");
+            System.out.println("------------------------");
             Scanner sc = new Scanner(System.in);
             System.out.print("==> ");
             int n = sc.nextInt();
