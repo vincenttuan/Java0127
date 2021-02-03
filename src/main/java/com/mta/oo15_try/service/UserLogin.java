@@ -1,11 +1,12 @@
 package com.mta.oo15_try.service;
 
 import com.mta.oo15_try.entity.User;
+import com.mta.oo15_try.exception.UserFailLoginException;
 import com.mta.oo15_try.exception.UserNotFoundException;
 import com.mta.oo15_try.util.UserUtil;
 
 public class UserLogin {
-    public boolean check(String username, String password) {
+    public boolean check(String username, String password) throws UserFailLoginException {
         try {
             // 1. 是否有此人 ?
             User user = UserUtil.getUserByName(username);
@@ -18,7 +19,7 @@ public class UserLogin {
             System.out.printf("登入失敗: %s\n", ex.getMessage());
             return false; // 查無此人
         }
-        System.out.println("登入失敗: 密碼錯誤");
-        return false; // 密碼錯誤
+        UserFailLoginException e = new UserFailLoginException("登入失敗: 密碼錯誤");
+        throw e;
     }
 }
