@@ -11,7 +11,7 @@ public class DeleteTempFiles {
         if(dir.isDirectory()) {
             String[] fileNames = dir.list(); // 取得該路徑下所有的名稱(檔名or資料夾名)
             for(String fname : fileNames) {
-                File f = new File(dir.getPath() + "/" + fname);
+                File f = new File(dir.getPath() + File.separator + fname); // 組合成完整路徑
                 System.out.println(f);
                 if(f.isFile() && fname.contains("temp")) {
                     f.delete();
