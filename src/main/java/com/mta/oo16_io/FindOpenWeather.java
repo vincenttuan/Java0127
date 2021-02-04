@@ -2,6 +2,7 @@ package com.mta.oo16_io;
 
 import java.io.InputStream;
 import java.net.URL;
+import org.json.JSONObject;
 
 public class FindOpenWeather {
     public static void main(String[] args) {
@@ -21,6 +22,14 @@ public class FindOpenWeather {
             }
             is.close();
             System.out.println(jsonstr);
+            // 利用 org.json 剖析 jsonstr 字串
+            JSONObject root = new JSONObject(jsonstr);
+            JSONObject main = root.getJSONObject("main");
+            double temp = main.getDouble("temp") - 273.15;
+            int humidity = main.getInt("humidity");
+            System.out.printf("目前溫度: %.2f °C\n", temp);
+            System.out.printf("目前濕度: %d %%\n", humidity);
+            
         } catch (Exception e) {
         }
         
