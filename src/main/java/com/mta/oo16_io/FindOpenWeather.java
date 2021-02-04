@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 public class FindOpenWeather {
     public static void main(String[] args) {
-        String cityName = "taiwan,taoyuan";
+        String cityName = "taoyuan,TW";
         String id = "";
         String urlstr = "http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s";
         urlstr = String.format(urlstr, cityName, id);
