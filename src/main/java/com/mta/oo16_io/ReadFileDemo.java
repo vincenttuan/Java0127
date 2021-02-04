@@ -12,7 +12,7 @@ public class ReadFileDemo {
                 System.out.println(data + " --> " + (char)data);
                 message += (char)data;
             }
-            System.out.println(message);
+            System.out.printf("文件內容: %s\n", message);
         } catch (Exception e) {
         }
         
