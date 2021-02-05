@@ -7,7 +7,7 @@ public class Weather {
     private double feelsLike;
     private double tempMin;
     private double tempMax;
-    private double pressure;
+    private int pressure;
     private int humidity;
     private String description;
     private String icon;
@@ -61,11 +61,11 @@ public class Weather {
         this.tempMax = tempMax;
     }
 
-    public double getPressure() {
+    public int getPressure() {
         return pressure;
     }
 
-    public void setPressure(double pressure) {
+    public void setPressure(int pressure) {
         this.pressure = pressure;
     }
 
@@ -106,4 +106,5 @@ public class Weather {
         return "Weather{" + "country=" + country + ", cityName=" + cityName + ", temp=" + temp + ", feelsLike=" + feelsLike + ", tempMin=" + tempMin + ", tempMax=" + tempMax + ", pressure=" + pressure + ", humidity=" + humidity + ", description=" + description + ", icon=" + icon + ", dt=" + dt + '}';
     }
     
+       
 }

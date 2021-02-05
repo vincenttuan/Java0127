@@ -25,8 +25,14 @@ public class Util {
             weather.setCountry(root.getJSONObject("sys").getString("country"));
             weather.setCityName(root.getString("name"));
             weather.setTemp(root.getJSONObject("main").getDouble("temp"));
-            
-            
+            weather.setFeelsLike(root.getJSONObject("main").getDouble("feels_like"));
+            weather.setTempMin(root.getJSONObject("main").getDouble("temp_min"));
+            weather.setTempMax(root.getJSONObject("main").getDouble("pressure"));
+            weather.setPressure(root.getJSONObject("main").getInt("pressure"));
+            weather.setHumidity(root.getJSONObject("main").getInt("humidity"));
+            weather.setDescription(root.getJSONArray("weather").getJSONObject(0).getString("description"));
+            weather.setIcon(root.getJSONArray("weather").getJSONObject(0).getString("icon"));
+            weather.setDt(root.getLong("dt"));
         } catch (Exception e) {
             e.printStackTrace();
         }
