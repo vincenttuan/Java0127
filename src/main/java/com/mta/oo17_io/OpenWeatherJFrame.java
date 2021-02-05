@@ -23,9 +23,11 @@ import javax.swing.table.DefaultTableModel;
 public class OpenWeatherJFrame extends javax.swing.JFrame {
 
     private static List<String> cityNames = new ArrayList<>();
+    private static int timeout = 60_000;
 
     static {
         Util.setCityName(cityNames);
+        timeout = Util.getTimeout();
     }
 
     public OpenWeatherJFrame() {
@@ -63,7 +65,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                         model.addRow(rowData);
                     }
                     try {
-                        Thread.sleep(10_000);
+                        Thread.sleep(timeout);
                     } catch (Exception e) {
                     }
                 }
