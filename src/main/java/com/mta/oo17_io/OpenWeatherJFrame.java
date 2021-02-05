@@ -32,10 +32,20 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jLabel7 = new javax.swing.JLabel();
         cn1 = new javax.swing.JRadioButton();
         cn2 = new javax.swing.JRadioButton();
         cn3 = new javax.swing.JRadioButton();
         cn4 = new javax.swing.JRadioButton();
+        temp_label = new javax.swing.JLabel();
+        feel_label = new javax.swing.JLabel();
+        humi_label = new javax.swing.JLabel();
+        icon_label = new javax.swing.JLabel();
+        dt_label = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+
+        jLabel7.setText("jLabel7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OpenWeather 現在天氣");
@@ -44,6 +54,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         cn1.setText("台北");
 
         cn2.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
+        cn2.setSelected(true);
         cn2.setText("桃園");
 
         cn3.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
@@ -52,20 +63,63 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         cn4.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
         cn4.setText("高雄");
 
+        temp_label.setFont(new java.awt.Font("Comic Sans MS", 0, 60)); // NOI18N
+        temp_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        temp_label.setText("00.0");
+
+        feel_label.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        feel_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        feel_label.setText("00.0");
+
+        humi_label.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        humi_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        humi_label.setText("00");
+
+        icon_label.setFont(new java.awt.Font("新細明體", 0, 48)); // NOI18N
+        icon_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icon_label.setText("icon");
+
+        dt_label.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
+        dt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dt_label.setText("2020-01-01 00:00:00");
+
+        jLabel6.setFont(new java.awt.Font("新細明體", 0, 36)); // NOI18N
+        jLabel6.setText("°C");
+
+        jLabel8.setFont(new java.awt.Font("新細明體", 0, 36)); // NOI18N
+        jLabel8.setText("%");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(cn1)
-                .addGap(18, 18, 18)
-                .addComponent(cn2)
-                .addGap(18, 18, 18)
-                .addComponent(cn3)
-                .addGap(18, 18, 18)
-                .addComponent(cn4)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(icon_label, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(temp_label, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(feel_label, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cn1)
+                                .addGap(18, 18, 18)
+                                .addComponent(cn2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cn3)
+                                .addGap(18, 18, 18)
+                                .addComponent(cn4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(humi_label, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel8)))))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +130,24 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                     .addComponent(cn2)
                     .addComponent(cn3)
                     .addComponent(cn4))
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(temp_label)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(feel_label))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(humi_label)
+                            .addComponent(jLabel8))))
+                .addGap(18, 18, 18)
+                .addComponent(icon_label)
+                .addGap(29, 29, 29)
+                .addComponent(dt_label)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,5 +194,13 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton cn2;
     private javax.swing.JRadioButton cn3;
     private javax.swing.JRadioButton cn4;
+    private javax.swing.JLabel dt_label;
+    private javax.swing.JLabel feel_label;
+    private javax.swing.JLabel humi_label;
+    private javax.swing.JLabel icon_label;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel temp_label;
     // End of variables declaration//GEN-END:variables
 }
