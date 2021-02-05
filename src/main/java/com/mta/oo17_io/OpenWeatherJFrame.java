@@ -45,6 +45,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
 
     private void showWeatherTable() {
         Util util = new Util();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         Thread t = new Thread() {
             @Override
             public void run() {
@@ -62,7 +63,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                             w.getHumidity(),
                             w.getPressure(),
                             w.getDescription(),
-                            w.getDt()
+                            String.format("%s", sdf.format(new Date(w.getDt()*1000)))
                         };
                         model.addRow(rowData);
                     }
