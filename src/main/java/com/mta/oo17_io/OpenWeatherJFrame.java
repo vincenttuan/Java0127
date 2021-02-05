@@ -33,6 +33,10 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                 allData += (char)data;
             }
             System.out.println(allData);
+            String[] names = allData.split("\n");
+            for(String name : names) {
+                cityNames.add(name);
+            }
         } catch (Exception e) {
         }
     }
