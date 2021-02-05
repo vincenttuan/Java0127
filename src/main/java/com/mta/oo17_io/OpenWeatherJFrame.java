@@ -50,6 +50,8 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         Date date = new Date(weather.getDt() * 1000);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         dt_label.setText(String.format("%s", sdf.format(date)));
+        
+        description_label.setText(weather.getDescription());
     }
     
     /**
@@ -74,6 +76,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         dt_label = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        description_label = new javax.swing.JLabel();
 
         jLabel7.setText("jLabel7");
 
@@ -123,15 +126,19 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("新細明體", 0, 36)); // NOI18N
         jLabel8.setText("%");
 
+        description_label.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
+        description_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        description_label.setText("Description");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(icon_label, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(icon_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(temp_label, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,8 +159,9 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                                 .addGap(13, 13, 13)
                                 .addComponent(humi_label, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8)))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                                .addComponent(jLabel8))))
+                    .addComponent(description_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +187,9 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel8))))
                 .addGap(18, 18, 18)
                 .addComponent(icon_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(description_label)
+                .addGap(29, 29, 29)
                 .addComponent(dt_label)
                 .addGap(44, 44, 44))
         );
@@ -228,6 +238,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton cn2;
     private javax.swing.JRadioButton cn3;
     private javax.swing.JRadioButton cn4;
+    private javax.swing.JLabel description_label;
     private javax.swing.JLabel dt_label;
     private javax.swing.JLabel feel_label;
     private javax.swing.JLabel humi_label;
