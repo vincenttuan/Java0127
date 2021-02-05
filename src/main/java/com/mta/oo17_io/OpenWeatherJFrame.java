@@ -8,7 +8,9 @@ package com.mta.oo17_io;
 import java.io.InputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -17,10 +19,18 @@ import javax.swing.ImageIcon;
  * @author MB-teacher
  */
 public class OpenWeatherJFrame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form OpenWeatherJFrame
-     */
+    
+    private static List<String> cityNames = new ArrayList<>();
+    static {
+        cityNames.add("Taipei");
+        cityNames.add("London");
+        cityNames.add("Paris");
+        cityNames.add("New%20York");
+        cityNames.add("Beijing");
+        cityNames.add("Islamabad");
+        cityNames.add("Jerusalem");
+    }
+    
     public OpenWeatherJFrame() {
         initComponents();
         buttonGroup1.add(cn1);
