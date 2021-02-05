@@ -1,15 +1,34 @@
 package com.mta.oo17_io;
 
+import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
+import java.util.List;
 import org.json.JSONObject;
 
 public class Util {
 
     private static final String ID = "fcc57465b76d35357c84e4e30fe2431a";
     private static final String URL_STRING = "http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s";
-
+    
+    public static void setCityName(List<String> cityNames) {
+        // 取得 CityName.txt
+        try(FileReader fr = new FileReader("src\\main\\java\\com\\mta\\oo17_io\\CityName.txt")) {
+            int data = 0;
+            String allData = "";
+            while((data = fr.read()) != -1) {
+                allData += (char)data;
+            }
+            System.out.println(allData);
+            String[] names = allData.split("\n");
+            for(String name : names) {
+                cityNames.add(name);
+            }
+        } catch (Exception e) {
+        }
+    }
+    
     public String getJsonString(String country, String cityName) {
         String q = cityName + "," + country;
         String urlstr = String.format(URL_STRING, q, ID);

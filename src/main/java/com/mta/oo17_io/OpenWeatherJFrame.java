@@ -25,20 +25,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
     private static List<String> cityNames = new ArrayList<>();
 
     static {
-        // 取得 CityName.txt
-        try(FileReader fr = new FileReader("src\\main\\java\\com\\mta\\oo17_io\\CityName.txt")) {
-            int data = 0;
-            String allData = "";
-            while((data = fr.read()) != -1) {
-                allData += (char)data;
-            }
-            System.out.println(allData);
-            String[] names = allData.split("\n");
-            for(String name : names) {
-                cityNames.add(name);
-            }
-        } catch (Exception e) {
-        }
+        Util.setCityName(cityNames);
     }
 
     public OpenWeatherJFrame() {
