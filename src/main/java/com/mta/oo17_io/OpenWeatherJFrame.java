@@ -5,6 +5,13 @@
  */
 package com.mta.oo17_io;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author MB-teacher
@@ -20,8 +27,31 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         buttonGroup1.add(cn2);
         buttonGroup1.add(cn3);
         buttonGroup1.add(cn4);
+        showWeather("TW", "kaohsiung");
     }
-
+    
+    private void showWeather(String country, String cityName) {
+        Util util = new Util();
+        Weather weather = util.getWeather(country, cityName);
+        temp_label.setText(String.format("%.1f", weather.getTemp()));
+        feel_label.setText(String.format("%.1f", weather.getFeelsLike()));
+        humi_label.setText(String.format("%d", weather.getHumidity()));
+        // 取得網路 icon
+        String icon_url = "http://openweathermap.org/img/wn/%s@2x.png";
+        icon_url = String.format(icon_url, weather.getIcon());
+        try {
+            InputStream icon_stream = new URL(icon_url).openStream();
+            icon_label.setText("");
+            icon_label.setIcon(new ImageIcon(ImageIO.read(icon_stream)));
+        } catch (Exception e) {
+            icon_label.setText(e.getMessage());
+        }
+        // 時間轉換
+        Date date = new Date(weather.getDt() * 1000);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dt_label.setText(String.format("%s", sdf.format(date)));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,14 +94,17 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         cn4.setText("高雄");
 
         temp_label.setFont(new java.awt.Font("Comic Sans MS", 0, 60)); // NOI18N
+        temp_label.setForeground(new java.awt.Color(0, 153, 153));
         temp_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         temp_label.setText("00.0");
 
         feel_label.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        feel_label.setForeground(new java.awt.Color(0, 153, 0));
         feel_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         feel_label.setText("00.0");
 
         humi_label.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        humi_label.setForeground(new java.awt.Color(153, 0, 51));
         humi_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         humi_label.setText("00");
 
@@ -80,6 +113,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         icon_label.setText("icon");
 
         dt_label.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
+        dt_label.setForeground(new java.awt.Color(102, 102, 102));
         dt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dt_label.setText("2020-01-01 00:00:00");
 
@@ -145,9 +179,9 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel8))))
                 .addGap(18, 18, 18)
                 .addComponent(icon_label)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(dt_label)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
 
         pack();
