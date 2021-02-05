@@ -23,6 +23,8 @@ public class Util {
             JSONObject root = new JSONObject(jsonstr);
             // 將 json 的資料配置到 weather 的物件屬性內
             weather.setCountry(root.getJSONObject("sys").getString("country"));
+            weather.setCityName(root.getString("name"));
+            weather.setTemp(root.getJSONObject("main").getDouble("temp"));
             
             
         } catch (Exception e) {
