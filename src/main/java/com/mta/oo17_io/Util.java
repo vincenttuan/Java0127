@@ -12,6 +12,19 @@ public class Util {
     private static final String ID = "fcc57465b76d35357c84e4e30fe2431a";
     private static final String URL_STRING = "http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s";
     
+    public static int getTimeout() {
+        String allData = "";
+        try(FileReader fr = new FileReader("src\\main\\java\\com\\mta\\oo17_io\\Timeout.txt")) {
+            int data = 0;
+            while((data = fr.read()) != -1) {
+                allData += (char)data;
+            }
+            System.out.println(allData);
+        } catch (Exception e) {
+        }
+        return Integer.parseInt(allData.trim()); // trim() 去除左右空白, 字串轉數字
+    }
+    
     public static void setCityName(List<String> cityNames) {
         // 取得 CityName.txt
         try(FileReader fr = new FileReader("src\\main\\java\\com\\mta\\oo17_io\\CityName.txt")) {
