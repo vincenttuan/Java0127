@@ -20,8 +20,9 @@ import javax.swing.table.DefaultTableModel;
  * @author MB-teacher
  */
 public class OpenWeatherJFrame extends javax.swing.JFrame {
-    
+
     private static List<String> cityNames = new ArrayList<>();
+
     static {
         cityNames.add("Taipei");
         cityNames.add("London");
@@ -31,7 +32,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         cityNames.add("Islamabad");
         cityNames.add("Jerusalem");
     }
-    
+
     public OpenWeatherJFrame() {
         initComponents();
         buttonGroup1.add(cn1);
@@ -41,34 +42,41 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         showWeather("TW", "taoyuan");
         showWeatherTable();
     }
-    
+
     private void showWeatherTable() {
         Util util = new Util();
-        DefaultTableModel model = (DefaultTableModel)weather_table.getModel();
-        model.setNumRows(0); // 清空
-        Thread t = new Thread(){
+        Thread t = new Thread() {
             @Override
             public void run() {
-                for(String name : cityNames) {
-                    Weather w = util.getWeather("", name);
-                    Object[] rowData = {
-                        w.getCityName(),
-                        String.format("%.1f", w.getTemp()),
-                        String.format("%.1f", w.getFeelsLike()),
-                        String.format("%.1f", w.getTempMin()),
-                        String.format("%.1f", w.getTempMax()),
-                        w.getHumidity(),
-                        w.getPressure(),
-                        w.getDescription(),
-                        w.getDt()
-                    };
-                    model.addRow(rowData);
+                while (true) {
+                    DefaultTableModel model = (DefaultTableModel) weather_table.getModel();
+                    model.setNumRows(0); // 清空
+                    for (String name : cityNames) {
+                        Weather w = util.getWeather("", name);
+                        Object[] rowData = {
+                            w.getCityName(),
+                            String.format("%.1f", w.getTemp()),
+                            String.format("%.1f", w.getFeelsLike()),
+                            String.format("%.1f", w.getTempMin()),
+                            String.format("%.1f", w.getTempMax()),
+                            w.getHumidity(),
+                            w.getPressure(),
+                            w.getDescription(),
+                            w.getDt()
+                        };
+                        model.addRow(rowData);
+                    }
+                    try {
+                        Thread.sleep(10_000);
+                    } catch (Exception e) {
+                    }
                 }
+
             }
         };
         t.start();
     }
-    
+
     private void showWeather(String country, String cityName) {
         Util util = new Util();
         Weather weather = util.getWeather(country, cityName);
@@ -89,10 +97,10 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         Date date = new Date(weather.getDt() * 1000);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         dt_label.setText(String.format("%s", sdf.format(date)));
-        
+
         description_label.setText(weather.getDescription());
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -296,25 +304,25 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cn1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cn1ItemStateChanged
-        if(evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
+        if (evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
             showWeather("TW", "taipei");
         }
     }//GEN-LAST:event_cn1ItemStateChanged
 
     private void cn2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cn2ItemStateChanged
-        if(evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
+        if (evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
             showWeather("TW", "taoyuan");
         }
     }//GEN-LAST:event_cn2ItemStateChanged
 
     private void cn3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cn3ItemStateChanged
-        if(evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
+        if (evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
             showWeather("TW", "taichung");
         }
     }//GEN-LAST:event_cn3ItemStateChanged
 
     private void cn4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cn4ItemStateChanged
-        if(evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
+        if (evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
             showWeather("TW", "kaohsiung");
         }
     }//GEN-LAST:event_cn4ItemStateChanged
