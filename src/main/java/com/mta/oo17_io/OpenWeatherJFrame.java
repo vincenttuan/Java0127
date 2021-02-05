@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,6 +39,34 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         buttonGroup1.add(cn3);
         buttonGroup1.add(cn4);
         showWeather("TW", "taoyuan");
+        showWeatherTable();
+    }
+    
+    private void showWeatherTable() {
+        Util util = new Util();
+        DefaultTableModel model = (DefaultTableModel)weather_table.getModel();
+        model.setNumRows(0); // 清空
+        Thread t = new Thread(){
+            @Override
+            public void run() {
+                for(String name : cityNames) {
+                    Weather w = util.getWeather("", name);
+                    Object[] rowData = {
+                        w.getCityName(),
+                        String.format("%.1f", w.getTemp()),
+                        String.format("%.1f", w.getFeelsLike()),
+                        String.format("%.1f", w.getTempMin()),
+                        String.format("%.1f", w.getTempMax()),
+                        w.getHumidity(),
+                        w.getPressure(),
+                        w.getDescription(),
+                        w.getDt()
+                    };
+                    model.addRow(rowData);
+                }
+            }
+        };
+        t.start();
     }
     
     private void showWeather(String country, String cityName) {
@@ -87,6 +116,9 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         description_label = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        weather_table = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         jLabel7.setText("jLabel7");
 
@@ -160,6 +192,28 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         description_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         description_label.setText("Description");
 
+        weather_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "城市", "溫度", "體感溫度", "最低溫", "最高溫", "濕度", "大氣壓力", "天氣概況", "偵測時間"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(weather_table);
+
+        jLabel1.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("全球主要城市天氣");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,36 +245,50 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8))))
                     .addComponent(description_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cn1)
-                    .addComponent(cn2)
-                    .addComponent(cn3)
-                    .addComponent(cn4))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(temp_label)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(feel_label))
+                            .addComponent(cn1)
+                            .addComponent(cn2)
+                            .addComponent(cn3)
+                            .addComponent(cn4)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(humi_label)
-                            .addComponent(jLabel8))))
-                .addGap(18, 18, 18)
-                .addComponent(icon_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(description_label)
-                .addGap(29, 29, 29)
-                .addComponent(dt_label)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(temp_label)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(feel_label))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(humi_label)
+                                    .addComponent(jLabel8))))
+                        .addGap(18, 18, 18)
+                        .addComponent(icon_label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addComponent(description_label)
+                        .addGap(29, 29, 29)
+                        .addComponent(dt_label))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(44, 44, 44))
         );
 
@@ -297,9 +365,12 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel feel_label;
     private javax.swing.JLabel humi_label;
     private javax.swing.JLabel icon_label;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel temp_label;
+    private javax.swing.JTable weather_table;
     // End of variables declaration//GEN-END:variables
 }
