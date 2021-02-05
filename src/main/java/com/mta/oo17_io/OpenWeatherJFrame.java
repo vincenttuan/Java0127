@@ -27,7 +27,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         buttonGroup1.add(cn2);
         buttonGroup1.add(cn3);
         buttonGroup1.add(cn4);
-        showWeather("TW", "kaohsiung");
+        showWeather("TW", "taoyuan");
     }
     
     private void showWeather(String country, String cityName) {
@@ -85,16 +85,36 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
 
         cn1.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
         cn1.setText("台北");
+        cn1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cn1ItemStateChanged(evt);
+            }
+        });
 
         cn2.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
         cn2.setSelected(true);
         cn2.setText("桃園");
+        cn2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cn2ItemStateChanged(evt);
+            }
+        });
 
         cn3.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
         cn3.setText("台中");
+        cn3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cn3ItemStateChanged(evt);
+            }
+        });
 
         cn4.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
         cn4.setText("高雄");
+        cn4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cn4ItemStateChanged(evt);
+            }
+        });
 
         temp_label.setFont(new java.awt.Font("Comic Sans MS", 0, 60)); // NOI18N
         temp_label.setForeground(new java.awt.Color(0, 153, 153));
@@ -196,6 +216,30 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cn1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cn1ItemStateChanged
+        if(evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
+            showWeather("TW", "taipei");
+        }
+    }//GEN-LAST:event_cn1ItemStateChanged
+
+    private void cn2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cn2ItemStateChanged
+        if(evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
+            showWeather("TW", "taoyuan");
+        }
+    }//GEN-LAST:event_cn2ItemStateChanged
+
+    private void cn3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cn3ItemStateChanged
+        if(evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
+            showWeather("TW", "taichung");
+        }
+    }//GEN-LAST:event_cn3ItemStateChanged
+
+    private void cn4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cn4ItemStateChanged
+        if(evt.getStateChange() == 1) { // 1: 表示被點選, 2: 表示從已點選中離開
+            showWeather("TW", "kaohsiung");
+        }
+    }//GEN-LAST:event_cn4ItemStateChanged
 
     /**
      * @param args the command line arguments
