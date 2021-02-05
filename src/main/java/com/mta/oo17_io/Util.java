@@ -33,10 +33,10 @@ public class Util {
         // 將 json 的資料配置到 weather 的物件屬性內
         weather.setCountry(root.getJSONObject("sys").getString("country"));
         weather.setCityName(root.getString("name"));
-        weather.setTemp(root.getJSONObject("main").getDouble("temp"));
-        weather.setFeelsLike(root.getJSONObject("main").getDouble("feels_like"));
-        weather.setTempMin(root.getJSONObject("main").getDouble("temp_min"));
-        weather.setTempMax(root.getJSONObject("main").getDouble("pressure"));
+        weather.setTemp(root.getJSONObject("main").getDouble("temp") - 273.15);
+        weather.setFeelsLike(root.getJSONObject("main").getDouble("feels_like") - 273.15);
+        weather.setTempMin(root.getJSONObject("main").getDouble("temp_min") - 273.15);
+        weather.setTempMax(root.getJSONObject("main").getDouble("temp_max") - 273.15);
         weather.setPressure(root.getJSONObject("main").getInt("pressure"));
         weather.setHumidity(root.getJSONObject("main").getInt("humidity"));
         weather.setDescription(root.getJSONArray("weather").getJSONObject(0).getString("description"));
