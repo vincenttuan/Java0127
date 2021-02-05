@@ -5,6 +5,7 @@
  */
 package com.mta.oo17_io;
 
+import java.io.FileReader;
 import java.io.InputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -24,13 +25,16 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
     private static List<String> cityNames = new ArrayList<>();
 
     static {
-        cityNames.add("Taipei");
-        cityNames.add("London");
-        cityNames.add("Paris");
-        cityNames.add("New%20York");
-        cityNames.add("Beijing");
-        cityNames.add("Islamabad");
-        cityNames.add("Jerusalem");
+        // 取得 CityName.txt
+        try(FileReader fr = new FileReader("src\\main\\java\\com\\mta\\oo17_io\\CityName.txt")) {
+            int data = 0;
+            String allData = "";
+            while((data = fr.read()) != -1) {
+                allData += (char)data;
+            }
+            System.out.println(allData);
+        } catch (Exception e) {
+        }
     }
 
     public OpenWeatherJFrame() {
