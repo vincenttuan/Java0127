@@ -1,3 +1,5 @@
+SELECT * FROM APP.STUDENT;
+
 SELECT s."NAME", s.SCORE
 FROM APP.STUDENT s
 ORDER BY s.SCORE DESC; -- ASC(預設)由小->大. DESC 由大->小
@@ -12,3 +14,12 @@ WHERE s.SCORE >= 90 AND s.ID >= 2;
 SELECT SUM(s.SCORE) as total, AVG(s.SCORE) as average
 FROM APP.STUDENT s;
 
+-- 總人數
+SELECT COUNT(s."NAME") as count
+FROM APP.STUDENT s;
+
+-- 分組
+-- 分數, 人數
+SELECT s.SCORE, COUNT(s."NAME") as count
+FROM APP.STUDENT s
+GROUP BY s.SCORE
