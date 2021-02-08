@@ -1,4 +1,2 @@
 DELETE FROM APP.STUDENT
 WHERE id = 8;
-
-

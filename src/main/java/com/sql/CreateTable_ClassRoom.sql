@@ -1,0 +1,6 @@
+CREATE TABLE Classroom (
+    id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY, -- 會自動累加的序號
+    name VARCHAR(20),
+    PRIMARY KEY(id)
+)
+
