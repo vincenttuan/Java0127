@@ -38,6 +38,7 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         buttonGroup1.add(cn4);
         showWeather("TW", "taoyuan");
         showWeatherTable();
+        timeout_label.setText(String.format("%d", timeout/1000));
     }
 
     private void showWeatherTable() {
@@ -125,6 +126,8 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         weather_table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        timeout_label = new javax.swing.JLabel();
 
         jLabel7.setText("jLabel7");
 
@@ -214,11 +217,20 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        weather_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                weather_tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(weather_table);
 
         jLabel1.setFont(new java.awt.Font("微軟正黑體", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("全球主要城市天氣");
+
+        jLabel2.setText("更新(秒) : ");
+
+        timeout_label.setText("00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,8 +265,13 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                     .addComponent(description_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(timeout_label, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -270,7 +287,10 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
                             .addComponent(cn4)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(timeout_label))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,6 +345,15 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cn4ItemStateChanged
 
+    private void weather_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_weather_tableMouseClicked
+        if(evt.getClickCount() == 2) { // 滑鼠按下2次
+            int row = weather_table.getSelectedRow(); // 取得目前所選定的列號
+            int col = 0; // 第一個欄位
+            String name = weather_table.getValueAt(row, col).toString();
+            showWeather("", name);
+        }
+    }//GEN-LAST:event_weather_tableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -372,11 +401,13 @@ public class OpenWeatherJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel humi_label;
     private javax.swing.JLabel icon_label;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel temp_label;
+    private javax.swing.JLabel timeout_label;
     private javax.swing.JTable weather_table;
     // End of variables declaration//GEN-END:variables
 }
