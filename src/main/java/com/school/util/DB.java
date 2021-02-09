@@ -120,4 +120,26 @@ public class DB {
         }
         return classroom;
     }
+    
+    // 4.查詢 Student 根據 id (單筆)
+    public static Student getStudentById(int id) {
+        Student student = null;
+        String sql = "SELECT id, name, score, ts, classroom_id FROM Student WHERE id=? FETCH FIRST 1 ROWS ONLY";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, id); // classroom_id=? 放入參數
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                student = new Student();
+                student.setId(rs.getInt("id"));
+                student.setName(rs.getString("name"));
+                student.setScore(rs.getInt("score"));
+                student.setTs(rs.getTimestamp("ts"));
+                break;
+            }
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return student;
+    }
 }
