@@ -121,7 +121,7 @@ public class DB {
         return classroom;
     }
     
-    // 4.查詢 Student 根據 id (單筆)
+    // 5.查詢 Student 根據 id (單筆)
     public static Student getStudentById(int id) {
         Student student = null;
         String sql = "SELECT id, name, score, ts, classroom_id FROM Student WHERE id=? FETCH FIRST 1 ROWS ONLY";
