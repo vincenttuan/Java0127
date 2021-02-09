@@ -1,10 +1,12 @@
 package com.school.util;
 
 import com.school.entity.Classroom;
+import com.school.entity.Student;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,5 +46,29 @@ public class DB {
         }
         
         return classrooms;
+    }
+
+    // 查詢所有 Student
+    public static List<Student> queryStudent() {
+        List<Student> students = new ArrayList<>();
+        String sql = "SELECT id, name, score, ts, classroom_id FROM Student";
+        try(PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();) {
+            while(rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int score = rs.getInt("score");
+                Timestamp ts = rs.getTimestamp("ts");
+                Student student = new Student();
+                student.setId(id);
+                student.setName(name);
+                student.setScore(score);
+                student.setTs(ts);
+                students.add(student);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return students;
     }
 }
