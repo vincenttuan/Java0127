@@ -2,7 +2,6 @@ package school;
 
 import com.school.entity.Student;
 import com.school.util.DB;
-import java.util.List;
 import org.junit.Test;
 
 public class Test5 {

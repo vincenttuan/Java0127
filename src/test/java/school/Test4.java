@@ -9,7 +9,9 @@ public class Test4 {
     public void t4() {
         Classroom classroom = DB.getClassroomById(1);
         if(classroom != null) {
-            System.out.printf("id: %d name: %s\n", classroom.getId(), classroom.getName());
+            System.out.printf("id: %d name: %s\n", 
+                    classroom.getId(), 
+                    classroom.getName());
         }
     }
 }
