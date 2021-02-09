@@ -81,17 +81,19 @@ public class DB {
         try (PreparedStatement pstmt = conn.prepareStatement(sql);) {
             pstmt.setInt(1, classroomId); // classroom_id=? 放入參數
             ResultSet rs = pstmt.executeQuery();
-            int id = rs.getInt("id");
-            String name = rs.getString("name");
-            int score = rs.getInt("score");
-            Timestamp ts = rs.getTimestamp("ts");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int score = rs.getInt("score");
+                Timestamp ts = rs.getTimestamp("ts");
+                Student student = new Student();
+                student.setId(id);
+                student.setName(name);
+                student.setScore(score);
+                student.setTs(ts);
+                students.add(student);
+            }
             rs.close();
-            Student student = new Student();
-            student.setId(id);
-            student.setName(name);
-            student.setScore(score);
-            student.setTs(ts);
-            students.add(student);
         } catch (Exception e) {
             e.printStackTrace();
         }
