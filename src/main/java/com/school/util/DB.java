@@ -126,7 +126,7 @@ public class DB {
         Student student = null;
         String sql = "SELECT id, name, score, ts, classroom_id FROM Student WHERE id=? FETCH FIRST 1 ROWS ONLY";
         try (PreparedStatement pstmt = conn.prepareStatement(sql);) {
-            pstmt.setInt(1, id); // classroom_id=? 放入參數
+            pstmt.setInt(1, id); // id=? 放入參數
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 student = new Student();
