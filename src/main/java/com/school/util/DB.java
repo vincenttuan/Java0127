@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DB {
+
     public static Connection conn;
+
     static {
         String url = "jdbc:derby://localhost:1527/mta";
         String username = "app";
@@ -22,13 +24,13 @@ public class DB {
             System.out.println("連線失敗: " + e);
         }
     }
-    
-    // 查詢所有 Classroom
+
+    // 1.查詢所有 Classroom
     public static List<Classroom> queryClassroom() {
         List<Classroom> classrooms = new ArrayList<>();
         String sql = "SELECT id, name FROM Classroom";
-        try(PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();) {
+        try (PreparedStatement pstmt = conn.prepareStatement(sql);
+                ResultSet rs = pstmt.executeQuery();) {
             // 逐步走訪 rs 的內容
             while (rs.next()) {
                 // 將欄位資料取出
@@ -44,17 +46,17 @@ public class DB {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return classrooms;
     }
 
-    // 查詢所有 Student
+    // 2.查詢所有 Student
     public static List<Student> queryStudent() {
         List<Student> students = new ArrayList<>();
         String sql = "SELECT id, name, score, ts, classroom_id FROM Student";
-        try(PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();) {
-            while(rs.next()) {
+        try (PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery();) {
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int score = rs.getInt("score");
@@ -71,4 +73,29 @@ public class DB {
         }
         return students;
     }
+
+    // 3.查詢 Student 根據 classroom's id
+    public static List<Student> queryStudentByClassroomId(int classroomId) {
+        List<Student> students = new ArrayList<>();
+        String sql = "SELECT id, name, score, ts, classroom_id FROM Student WHERE classroom_id=?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, classroomId); // classroom_id=? 放入參數
+            ResultSet rs = pstmt.executeQuery();
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            int score = rs.getInt("score");
+            Timestamp ts = rs.getTimestamp("ts");
+            rs.close();
+            Student student = new Student();
+            student.setId(id);
+            student.setName(name);
+            student.setScore(score);
+            student.setTs(ts);
+            students.add(student);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return students;
+    }
+
 }
