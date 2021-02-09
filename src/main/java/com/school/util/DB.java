@@ -99,5 +99,25 @@ public class DB {
         }
         return students;
     }
-
+    
+    // 4.查詢 Classroom 根據 id (單筆)
+    public static Classroom getClassroomById(int id) {
+        Classroom classroom = null;
+        // FETCH FIRST 1 ROWS ONLY 只找一筆
+        String sql = "SELECT id, name FROM Classroom WHERE id = ? FETCH FIRST 1 ROWS ONLY";
+        try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {                
+                classroom = new Classroom();
+                classroom.setId(rs.getInt("id"));
+                classroom.setName(rs.getString("name"));
+                break; // 因為只找一筆所以直接 break
+            }
+            rs.close();
+            
+        } catch (Exception e) {
+        }
+        return classroom;
+    }
 }
