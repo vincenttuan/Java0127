@@ -25,7 +25,7 @@ public class DB {
         }
     }
 
-    // 1.查詢所有 Classroom
+    // 1.查詢所有 Classroom (多筆)
     public static List<Classroom> queryClassroom() {
         List<Classroom> classrooms = new ArrayList<>();
         String sql = "SELECT id, name FROM Classroom";
@@ -50,7 +50,7 @@ public class DB {
         return classrooms;
     }
 
-    // 2.查詢所有 Student
+    // 2.查詢所有 Student (多筆)
     public static List<Student> queryStudent() {
         List<Student> students = new ArrayList<>();
         String sql = "SELECT id, name, score, ts, classroom_id FROM Student";
@@ -74,7 +74,7 @@ public class DB {
         return students;
     }
 
-    // 3.查詢 Student 根據 classroom's id
+    // 3.查詢 Student 根據 classroom's id (多筆)
     public static List<Student> queryStudentByClassroomId(int classroomId) {
         List<Student> students = new ArrayList<>();
         String sql = "SELECT id, name, score, ts, classroom_id FROM Student WHERE classroom_id=?";
@@ -142,4 +142,5 @@ public class DB {
         }
         return student;
     }
+
 }
