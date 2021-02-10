@@ -1,5 +1,10 @@
 package com.school;
 
+import com.school.entity.Classroom;
+import com.school.entity.Student;
+import com.school.util.AdvDB;
+import static com.school.util.DB.queryClassroom;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -23,13 +28,27 @@ public class Main {
     }
     
     public static void action() {
+        // 會用到的區域變數先宣告 -------------------
+        List<Classroom> classrooms = null;
+        List<Student> students = null;
+        Classroom classroom = null;
+        Student student = null;
+        //----------------------------------------
         Scanner sc = new Scanner(System.in);
         System.out.print("請選擇 ==> ");
         int no = sc.nextInt();
         switch(no) {
             case 1:
+                classrooms = AdvDB.queryClassroom();
+                for(Classroom room : classrooms) {
+                    System.out.println(room);
+                }
                 break;
             case 2:
+                students = AdvDB.queryStudent();
+                for(Student s : students) {
+                    System.out.println(s);
+                }
                 break;
             case 3:
                 break;
@@ -43,6 +62,10 @@ public class Main {
                 exit = true;
                 System.out.println("離開本系統~");
                 break;
+        }
+        if(!exit) {
+            System.out.println("按下 enter 後繼續 ...");
+            sc.nextLine();
         }
     }
 }
