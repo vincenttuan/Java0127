@@ -51,12 +51,28 @@ public class Main {
                 }
                 break;
             case 3:
+                classrooms = AdvDB.queryClassroomAdv();
+                for(Classroom room : classrooms) {
+                    System.out.println(room);
+                }
                 break;
             case 4:
+                students = AdvDB.queryStudentAdv();
+                for(Student s : students) {
+                    System.out.println(s);
+                }
                 break;
             case 5:
+                System.out.print("請輸入班級名稱: ");
+                String name = sc.next();
+                classroom = AdvDB.getClassroomByNameAdv(name);
+                System.out.println(classroom);
                 break;
             case 6:
+                System.out.print("請輸入學生id: ");
+                int id = sc.nextInt();
+                student = AdvDB.getStudentByIdAdv(id);
+                System.out.println(student);
                 break;
             case 0:
                 exit = true;
