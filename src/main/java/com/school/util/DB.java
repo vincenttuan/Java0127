@@ -121,7 +121,28 @@ public class DB {
         return classroom;
     }
     
-    // 5.查詢 Student 根據 id (單筆)
+    // 5.查詢 Classroom 根據 name (單筆)
+    public static Classroom getClassroomByName(String name) {
+        Classroom classroom = null;
+        // FETCH FIRST 1 ROWS ONLY 只找一筆
+        String sql = "SELECT id, name FROM Classroom WHERE name = ? FETCH FIRST 1 ROWS ONLY";
+        try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, name);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {                
+                classroom = new Classroom();
+                classroom.setId(rs.getInt("id"));
+                classroom.setName(rs.getString("name"));
+                break; // 因為只找一筆所以直接 break
+            }
+            rs.close();
+            
+        } catch (Exception e) {
+        }
+        return classroom;
+    }
+    
+    // 6.查詢 Student 根據 id (單筆)
     public static Student getStudentById(int id) {
         Student student = null;
         String sql = "SELECT id, name, score, ts, classroom_id FROM Student WHERE id=? FETCH FIRST 1 ROWS ONLY";
@@ -142,5 +163,6 @@ public class DB {
         }
         return student;
     }
-
+    
+    
 }
