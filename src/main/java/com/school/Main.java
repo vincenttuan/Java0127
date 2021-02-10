@@ -65,7 +65,7 @@ public class Main {
         }
         if(!exit) {
             System.out.println("按下 enter 後繼續 ...");
-            sc.nextLine();
+            new Scanner(System.in).nextLine();
         }
     }
 }
