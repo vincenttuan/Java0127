@@ -50,5 +50,17 @@ public class Student {
     public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
     }
+
+    @Override
+    public String toString() {
+        String msg = "";
+        msg += String.format("id: %d name: %s score:%d (%s) ", id, name, score, ts);
+        if(classroom != null) {
+            msg += String.format("[ %s ]", classroom.getName());
+        }
+        return msg;
+    }
+    
+    
     
 }
