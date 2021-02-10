@@ -32,5 +32,16 @@ public class Classroom {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
+
+    @Override
+    public String toString() {
+        // id, name, [student's name, student's score] ...
+        String msg = "";
+        msg += String.format("id: %d name:%s ", id, name);
+        for(Student s : students) {
+            msg += String.format("[%s, %d] ", s.getName(), s.getScore());
+        }
+        return msg;
+    }
     
 }
