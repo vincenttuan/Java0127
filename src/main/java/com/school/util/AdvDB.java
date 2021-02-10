@@ -17,4 +17,16 @@ public class AdvDB extends DB {
         }
         return classrooms; // 已裝配 student
     }
+    
+    // 2.查詢所有 Student (多筆) - 含 Classroom 裝配
+    public static List<Student> queryStudentAdv() {
+        // 取得未裝配 classroom 的資料
+        List<Student> students = queryStudent();
+        // 裝配 classroom
+        for(Student s : students) {
+            Classroom room = getClassroomById(s.getClassroomId());
+            s.setClassroom(room); // 裝配
+        }
+        return students; // 已裝配 classroom
+    }
 }
