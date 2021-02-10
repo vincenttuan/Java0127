@@ -157,6 +157,7 @@ public class DB {
                 student.setName(rs.getString("name"));
                 student.setScore(rs.getInt("score"));
                 student.setTs(rs.getTimestamp("ts"));
+                student.setClassroomId(rs.getInt("classroom_id"));
                 break;
             }
             rs.close();
