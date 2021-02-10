@@ -52,8 +52,6 @@ public class Student {
         this.classroomId = classroomId;
     }
     
-    
-    
     public Classroom getClassroom() {
         return classroom;
     }

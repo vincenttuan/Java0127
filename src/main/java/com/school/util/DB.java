@@ -61,11 +61,13 @@ public class DB {
                 String name = rs.getString("name");
                 int score = rs.getInt("score");
                 Timestamp ts = rs.getTimestamp("ts");
+                int classroomId = rs.getInt("classroom_id");
                 Student student = new Student();
                 student.setId(id);
                 student.setName(name);
                 student.setScore(score);
                 student.setTs(ts);
+                student.setClassroomId(classroomId);
                 students.add(student);
             }
         } catch (Exception e) {
