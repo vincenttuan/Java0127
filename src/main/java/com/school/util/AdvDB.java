@@ -29,4 +29,24 @@ public class AdvDB extends DB {
         }
         return students; // 已裝配 classroom
     }
+
+    // 3.查詢 Classroom 根據 id (單筆) - 含 Student 裝配
+    public static Classroom getClassroomByIdAdv(int id) {
+        Classroom room = AdvDB.getClassroomById(id);
+        if(room != null) {
+            List<Student> students = AdvDB.queryStudent();
+            room.setStudents(students);
+        }
+        return room;
+    }
+    
+    // 4.查詢 Classroom 根據 name (單筆) - 含 Student 裝配
+    public static Classroom getClassroomByNameAdv(String name) {
+        return null;
+    }
+    
+    // 5.查詢 Student 根據 id (單筆) - 含 Student 裝配
+    public static Student getStudentByIdAdv(int id) {
+        return null;
+    }
 }
