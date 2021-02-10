@@ -7,6 +7,7 @@ public class Student {
     private String name;
     private int score;
     private Timestamp ts;
+    private int classroomId;
     // 欄位 classroom_id 所關聯的 classroom
     // 多對一
     private Classroom classroom;
@@ -43,6 +44,16 @@ public class Student {
         this.ts = ts;
     }
 
+    public int getClassroomId() {
+        return classroomId;
+    }
+
+    public void setClassroomId(int classroomId) {
+        this.classroomId = classroomId;
+    }
+    
+    
+    
     public Classroom getClassroom() {
         return classroom;
     }
@@ -56,7 +67,7 @@ public class Student {
         String msg = "";
         msg += String.format("id: %2d name: %-10s score:%4d (%-23s) ", id, name, score, ts);
         if(classroom != null) {
-            msg += String.format("[ %s ]", classroom.getName());
+            msg += String.format("[ %-3s ]", classroom.getName());
         }
         return msg;
     }
