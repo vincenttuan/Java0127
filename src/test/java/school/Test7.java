@@ -1,8 +1,11 @@
 package school;
 
+
+import com.school.entity.Classroom;
 import com.school.entity.Student;
-import com.school.util.DB;
+import static com.school.util.DB.getClassroomById;
 import static com.school.util.DB.queryStudent;
+
 import java.util.List;
 import org.junit.Test;
 
@@ -14,9 +17,14 @@ public class Test7 {
         for(Student s : students) {
             System.out.println(s);
         }
-        // 裝配
+        // 裝配 Classroom
         for(Student s : students) {
-            
+            Classroom classroom = getClassroomById(s.getClassroomId());
+            s.setClassroom(classroom);
+        }
+        // 裝配後
+        for(Student s : students) {
+            System.out.println(s);
         }
     }
 }
