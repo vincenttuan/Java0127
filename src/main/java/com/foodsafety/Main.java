@@ -2,7 +2,7 @@ package com.foodsafety;
 
 public class Main {
     public static void main(String[] args) {
-        String name = "池上";
+        String name = "御皇有機白米";
         System.out.printf("%10s %10s %10s %s\n", "品名", "檢驗結果", "行政處分", "不合格原因");
         System.out.println("-----------------------------------------------------");
         Rice[] badRices = Util.queryBadRices();
