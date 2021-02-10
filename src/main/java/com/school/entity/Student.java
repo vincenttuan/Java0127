@@ -54,7 +54,7 @@ public class Student {
     @Override
     public String toString() {
         String msg = "";
-        msg += String.format("id: %d name: %s score:%d (%s) ", id, name, score, ts);
+        msg += String.format("id: %2d name: %-10s score:%4d (%-23s) ", id, name, score, ts);
         if(classroom != null) {
             msg += String.format("[ %s ]", classroom.getName());
         }
