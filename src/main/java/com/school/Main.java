@@ -20,8 +20,8 @@ public class Main {
         System.out.println("2. 列出所有學生");
         System.out.println("3. 列出所有班級(含學生)");
         System.out.println("4. 列出所有學生(含班級)");
-        System.out.println("5. 單筆查詢指定班級(含學生)");
-        System.out.println("6. 單筆查詢指定學生(含班級)");
+        System.out.println("5. 單筆查詢指定班級名稱(含學生)");
+        System.out.println("6. 單筆查詢指定學生id(含班級)");
         System.out.println("0. 離開");
         System.out.println("------------------------------------");
         action();
