@@ -12,7 +12,7 @@ public class Test1 {
             URL url = new URL(path);
             String json = new Scanner(url.openStream(), "utf-8").useDelimiter("\\A").next();
             //System.out.println(json);
-            // 將 json 字串 mapping 到 Rice[] 陣列中
+            //利用 Gson 將 json 字串 mapping 到 Rice[] 陣列中
             
         } catch (Exception e) {
             e.printStackTrace();
