@@ -34,7 +34,7 @@ public class AdvDB extends DB {
     public static Classroom getClassroomByIdAdv(int id) {
         Classroom room = AdvDB.getClassroomById(id);
         if(room != null) {
-            List<Student> students = AdvDB.queryStudent();
+            List<Student> students = AdvDB.queryStudentByClassroomId(room.getId());
             room.setStudents(students);
         }
         return room;
@@ -44,7 +44,7 @@ public class AdvDB extends DB {
     public static Classroom getClassroomByNameAdv(String name) {
         Classroom room = AdvDB.getClassroomByName(name);
         if(room != null) {
-            List<Student> students = AdvDB.queryStudent();
+            List<Student> students = AdvDB.queryStudentByClassroomId(room.getId());
             room.setStudents(students);
         }
         return room;
